@@ -1,0 +1,12 @@
+.tab-pane{
+    -fx-background-color: black;
+    -fx-border-color: black;
+    -fx-alignment: center;
+}
+.tab {
+
+    -fx-fit-to-width: true;
+}
+#user{
+    -fx-text-fill: #0073ff;
+}
