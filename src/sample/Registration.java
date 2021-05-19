@@ -48,8 +48,12 @@ public class Registration {
     @FXML
     private Button createAccount;
 
+
+    private Model model;
     @FXML
     void initialize() {
+        Context.getInstance().setFontController(this);
+        model = Context.getInstance().getModel();
         createAccount.setOnAction(event -> {
             checkData();
         });
@@ -61,7 +65,8 @@ public class Registration {
         String secondPassword = Password.getText();
         if(password.equals(secondPassword)){
             System.out.println("Можно запустить");
-            Model.makeAuthorization(user,password);
+            //model.makeAuthorization(user,password);
+            model.registerUser(user,password);
         } else {
             Stage stage = (Stage) Nickname.getScene().getWindow();
             makeToast("Пароли не совпадают",stage);

@@ -12,6 +12,18 @@ public class Client {
     private OutputStreamWriter writer;
     private BufferedReader reader;
 
+    private static final String auth = "<auth";// аутентификация
+    private static final String authResult =  "<authresult"; // результат аутентификации
+    private static final String sendMessage = "<sendmessage";
+    private static final String register = "<register";
+    private static final String registerResult = "<registerresult";
+    private static final String makeChat = "<makechat";
+    private static final String deleteChat = "<deletechat";
+    private static final String joinChat = "<joinchat";
+    private static final String leave = "<leave";
+
+
+
     public Client(){
         try {
             socket = new Socket("127.0.0.1", 4000);
@@ -22,6 +34,13 @@ public class Client {
     }
 
     public void getAuthorization(){
+        try {
+            writer.write("<auth\n");
+            writer.flush();
+            System.out.println("<auth");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public ArrayList<String> getClients() throws IOException {
@@ -47,6 +66,16 @@ public class Client {
                 reader.close();
                 writer.close();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void registerUser(String registerFullInfo) {
+        String finalRequest = register + "." + registerFullInfo + ".register>";
+        try {
+            writer.write(finalRequest+"\n");
+            writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }

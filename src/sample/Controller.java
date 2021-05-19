@@ -70,11 +70,12 @@ public class Controller {
 
     private Model model;
     private Stage stage;
+    private Registration registration;
 
     @FXML
     void initialize() {
 
-
+        Context.getInstance().setController(this);
         model = new Model(this);
 
         createNewTabbledActivity();
@@ -174,12 +175,14 @@ public class Controller {
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("registration.fxml"));
+            FXMLLoader loader = new FXMLLoader();
+            //Parent newView = loader.load(getClass().getResource("1.fxml"));  // получение главного контейнера создаваемой формы
+            registration = loader.getController();
             dialog.getDialogPane().setContent(root);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
         Optional<ButtonType> result = dialog.showAndWait();
         ButtonType button  = result.orElse(ButtonType.CANCEL);

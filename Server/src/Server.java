@@ -12,6 +12,7 @@ public class Server {
             System.out.println("Started!");
 
             while (!servSocket.isClosed()) {
+                System.out.println("работает");
                 Socket client = servSocket.accept();
                 System.out.println("Connect! " + client.getInetAddress().getHostAddress() + ' ' + client.getPort() + ' ' + clients.size());
 
