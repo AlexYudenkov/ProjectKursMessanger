@@ -8,7 +8,7 @@ public class Server {
         ArrayList<Socket> clients = new ArrayList<>();
 
         try{
-            ServerSocket servSocket = new ServerSocket(4000);
+            ServerSocket servSocket = new ServerSocket(4250);
             System.out.println("Started!");
 
             while (!servSocket.isClosed()) {

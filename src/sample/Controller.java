@@ -173,6 +173,9 @@ public class Controller {
         dialog.getDialogPane().getButtonTypes().add(cancelButton);
         Stage stage = (Stage) UserSet.getScene().getWindow();
 
+
+
+
         try {
             Parent root = FXMLLoader.load(getClass().getResource("registration.fxml"));
             FXMLLoader loader = new FXMLLoader();

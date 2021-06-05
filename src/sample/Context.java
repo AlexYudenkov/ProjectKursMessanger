@@ -5,9 +5,11 @@ public class Context {
     public static Context getInstance() {
         return instance;
     }
-
-
+    private Model model;
     private Controller controller;
+    private Registration registration;
+    private Authorization authorization;
+
     public void setController(Controller controller) {
         this.controller=controller;
     }
@@ -16,7 +18,6 @@ public class Context {
         return controller;
     }
 
-    private Registration registration;
     public void setFontController(Registration registration) {
         this.registration=registration;
     }
@@ -24,7 +25,7 @@ public class Context {
     public Registration getFontController() {
         return registration;
     }
-    private Model model;
+
     public Model getModel() {
         return model;
     }
@@ -34,6 +35,11 @@ public class Context {
     }
 
 
+    public Authorization getAuthorization() {
+        return authorization;
+    }
 
-
+    public void setAuthorization(Authorization authorization) {
+        this.authorization = authorization;
+    }
 }

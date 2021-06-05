@@ -26,22 +26,13 @@ public class Client {
 
     public Client(){
         try {
-            socket = new Socket("127.0.0.1", 4000);
+            socket = new Socket("127.0.0.1", 4250);
             writer = new OutputStreamWriter(socket.getOutputStream());
             reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         }
         catch(IOException e) {e.printStackTrace();}
     }
 
-    public void getAuthorization(){
-        try {
-            writer.write("<auth\n");
-            writer.flush();
-            System.out.println("<auth");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public ArrayList<String> getClients() throws IOException {
         ArrayList<String> users = new ArrayList<>();
@@ -71,10 +62,22 @@ public class Client {
         }
     }
 
+    //отправка запроса на регистрацию пользователя
     public void registerUser(String registerFullInfo) {
         String finalRequest = register + "." + registerFullInfo + ".register>";
         try {
             writer.write(finalRequest+"\n");
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //отправка запроса на аутетификацию
+    public void authorization(String user, String password) {
+        String finalRequest = auth + "." + user + "." + password + ".auth>\n";
+        try {
+            writer.write(finalRequest);
             writer.flush();
         } catch (IOException e) {
             e.printStackTrace();

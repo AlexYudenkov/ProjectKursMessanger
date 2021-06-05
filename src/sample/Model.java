@@ -33,7 +33,7 @@ public class Model {
         if (person.isAuthorized()) {
             return false;
         } else {
-            connect.getAuthorization();
+            //connect.getAuthorization();
             return true;
         }
     }
@@ -47,16 +47,13 @@ public class Model {
     public void makeAuthorization(String name, String password){
         System.out.println(name);
         System.out.println(password);
-        connect.getAuthorization();
+        //connect.getAuthorization();
     }
     public void serverConnect(){
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 while(true) {
-
-
-
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
@@ -68,5 +65,9 @@ public class Model {
         });
         thread.start();
     }
-    
+
+    public void autentification(String user, String password) {
+        System.out.println("model");
+        connect.authorization(user,password);
+    }
 }
